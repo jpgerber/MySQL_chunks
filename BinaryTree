@@ -1,0 +1,10 @@
+/* An answer to the classic binary tree problem (see https://www.hackerrank.com/challenges/binary-search-tree-1/problem).
+I used a CASE approach. A join is not necessary for this item. Just think, 'does it have a child? does it have a parent?' and work from there.
+*/
+
+SELECT N, CASE
+WHEN P IS NULL THEN "Root"
+WHEN N IN (SELECT DISTINCT P FROM BST) THEN "Inner"
+ELSE "Leaf"
+END FROM BST ORDER BY N;
+
