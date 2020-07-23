@@ -1,0 +1,15 @@
+This comes from (https://www.hackerrank.com/challenges/challenges/problem)
+THe interesting part is that the join is simple but the conditions for retaining each row are difficult.
+First is a max (you need to create a temp table and then find the max of that table)
+Second is remove duplicate scores unless max (
+
+
+SELECT h.hacker_id, min(h.name), COUNT(c.challenge_id) as totz FROM hackers h INNER JOIN challenges c USING(hacker_id) GROUP BY h.hacker_id 
+HAVING totz = (SELECT MAX(temp1.cnt)
+        from (SELECT COUNT(hacker_id) as cnt
+             from Challenges
+             group by hacker_id
+             order by hacker_id) temp1)
+OR
+
+ORDER BY totz DESC, hacker_id
