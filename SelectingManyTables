@@ -1,0 +1,16 @@
+This relates to the company challenge at https://www.hackerrank.com/challenges/the-company/problem
+Things to note:
+1. You can use SELECT to create new columns without a join. Main conditions here are
+  a. Each new column will have row entries (as per the first two columns in this example) and need some linkage mechanism to identify each row (the WHERE clause)
+  b. The new column will likely be an aggregate
+2. DISTINCT was used because there were duplicates
+
+
+Solution:
+
+select c.company_code, c.founder,
+(select count(DISTINCT lead_manager_code) from Lead_Manager where company_code=c.company_code),
+(select count(DISTINCT senior_manager_code) from Senior_Manager where company_code=c.company_code),
+(select count(DISTINCT manager_code) from Manager where company_code=c.company_code),
+(select count(DISTINCT employee_code) from Employee where company_code=c.company_code)
+from Company c order by c.company_code;
