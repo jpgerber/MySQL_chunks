@@ -1,0 +1,5 @@
+# This shows how to join employees and managers salaries and then filter for employees who make more than their manager
+SELECT a.name from Employee a
+JOIN employee as b ON a.ManagerId=b.Id
+WHERE a.Salary > b.Salary
+
