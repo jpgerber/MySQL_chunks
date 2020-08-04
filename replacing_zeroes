@@ -1,0 +1,5 @@
+# Numbers in SQL can also be treated like strings if you use the REPLACE function (e.g. taking out the zeroes)
+# See https://www.hackerrank.com/challenges/the-blunder/problem
+# REPLACE(str, search_string, replacement_string)
+
+SELECT CEIL(AVG(salary) - AVG(REPLACE(salary, 0, ""))
